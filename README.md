@@ -113,7 +113,7 @@ $ source install/local_setup.bash
 
 The nodes should now be built and ready to use.  Remember to source the overlay as shown above so that ROS can find the nodes.
 
-One more step to add the ROS2 pcakage path ('ros_workspace/install/ros_deep_learning') to AMENT_PREFIX_PATH environment variable
+One more step to add the ROS2 pcakage path (`ros_workspace/install/ros_deep_learning`) to AMENT_PREFIX_PATH environment variable
 
 ```bash
 export AMENT_PREFIX_PATH=/workspace/install/ros_deep_learning:$AMENT_PREFIX_PATH
