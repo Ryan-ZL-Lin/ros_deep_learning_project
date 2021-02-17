@@ -278,3 +278,11 @@ Below are the message topics and parameters that each node implements.
 | codec          | `string` |     `"h264"`    | Codec used for compressed streams (see [here](https://github.com/dusty-nv/jetson-inference/blob/master/docs/aux-streaming.md#input-options) for valid values) |
 | bitrate        |   `int`  |     4000000     | Target VBR bitrate of encoded streams (in bits per second)                                                                                                    |
 
+
+## ROS Nodes Structure
+
+
+
+
+## Code Structure
+
