@@ -29,6 +29,10 @@
 		<param name="threshold" value="$(var threshold)"/>
 	</node>
 
+	<node pkg="ros_deep_learning" exec="move_controller" output="screen">
+		<remap from="/move_controller/detections" to="/detectnet/detections"/>
+	</node>
+
 	<!-- VIDEO OUTPUT -->
 	<include file="$(find-pkg-share ros_deep_learning)/launch/video_output.ros2.launch">
 		<arg name="topic" value="/detectnet/overlay"/>

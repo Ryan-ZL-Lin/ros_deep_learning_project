@@ -12,7 +12,7 @@ find_package(CUDA REQUIRED)
 find_package(catkin QUIET)
 
 if( catkin_FOUND )
-	message("detected ROS1 (catkin_make)")
+	message(STATUS "detected ROS1 (catkin_make)")
 
 	configure_file(${CMAKE_CURRENT_SOURCE_DIR}/package.ros1.xml ${CMAKE_CURRENT_SOURCE_DIR}/package.xml COPYONLY)
 
@@ -37,7 +37,7 @@ else()
 	find_package(ament_cmake QUIET)
 
 	if( ament_cmake_FOUND )
-		message("detected ROS2 (ament_cmake)")
+		message(STATUS "detected ROS2 (ament_cmake)")
 
 		configure_file(${CMAKE_CURRENT_SOURCE_DIR}/package.ros2.xml ${CMAKE_CURRENT_SOURCE_DIR}/package.xml COPYONLY)
 
@@ -74,6 +74,10 @@ target_link_libraries(video_source ${catkin_LIBRARIES} jetson-inference)
 add_executable(video_output src/node_video_output.cpp ${common_src})
 target_link_libraries(video_output ${catkin_LIBRARIES} jetson-inference)
 
+# add new node move_controller
+add_executable(move_controller src/node_move_controller.cpp ${common_src})
+target_link_libraries(move_controller ${catkin_LIBRARIES} jetson-inference)
+
 if( catkin_FOUND )
 	add_library(ros_deep_learning_nodelets src/nodelet_imagenet.cpp src/image_converter.cpp)
 	target_link_libraries(ros_deep_learning_nodelets ${catkin_LIBRARIES} jetson-inference)
@@ -96,6 +100,10 @@ else()
 
 	ament_target_dependencies(video_output rclcpp std_msgs sensor_msgs vision_msgs)
 	install(TARGETS video_output DESTINATION lib/${PROJECT_NAME})
+
+	# add new node move_controller
+	ament_target_dependencies(move_controller rclcpp std_msgs sensor_msgs vision_msgs)
+	install(TARGETS move_controller DESTINATION lib/${PROJECT_NAME})
 
 	install(DIRECTORY launch DESTINATION share/${PROJECT_NAME}/)
 

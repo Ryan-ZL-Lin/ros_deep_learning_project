@@ -108,17 +108,12 @@ void img_callback( const sensor_msgs::ImageConstPtr input )
 	// if objects were detected, send out message
 	if( numDetections > 0 )
 	{
-		ROS_INFO("detected %i objects in %ux%u image", numDetections, input->width, input->height);
-		
 		// create a detection for each bounding box
 		vision_msgs::Detection2DArray msg;
 
 		for( int n=0; n < numDetections; n++ )
 		{
 			detectNet::Detection* det = detections + n;
-
-			ROS_INFO("object %i class #%u (%s)  confidence=%f", n, det->ClassID, net->GetClassDesc(det->ClassID), det->Confidence);
-			ROS_INFO("object %i bounding box (%f, %f)  (%f, %f)  w=%f  h=%f", n, det->Left, det->Top, det->Right, det->Bottom, det->Width(), det->Height()); 
 			
 			// create a detection sub-message
 			vision_msgs::Detection2D detMsg;
@@ -137,7 +132,8 @@ void img_callback( const sensor_msgs::ImageConstPtr input )
 			// create classification hypothesis
 			vision_msgs::ObjectHypothesisWithPose hyp;
 			
-			hyp.id = det->ClassID;
+			//hyp.id = det->ClassID;
+			hyp.id = net->GetClassDesc(det->ClassID);
 			hyp.score = det->Confidence;
 
 			detMsg.results.push_back(hyp);
@@ -292,7 +288,7 @@ int main(int argc, char **argv)
 	/*
 	 * advertise publisher topics
 	 */
-	ROS_CREATE_PUBLISHER(vision_msgs::Detection2DArray, "detections", 25, detection_pub);
+	ROS_CREATE_PUBLISHER(vision_msgs::Detection2DArray, "detections", 1000, detection_pub);
 	ROS_CREATE_PUBLISHER(sensor_msgs::Image, "overlay", 2, overlay_pub);
 	
 	ROS_CREATE_PUBLISHER_STATUS(vision_msgs::VisionInfo, "vision_info", 1, info_callback, info_pub);
