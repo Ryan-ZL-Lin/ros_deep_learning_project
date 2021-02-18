@@ -314,6 +314,14 @@ Below are the message topics and parameters that each node implements.
 
 
 ## Expected Result
+
+```bash
+$ cd ~/ros_workspace/
+
+# ROS2 Eloquent
+ros2 launch ros_deep_learning detectnet.ros2.launch input:=src/ros_deep_learning_project/video/sample_qHD.mp4 output:=display://0
+```
+
 Please refer to /video/Test_Result.mp4
 
 
