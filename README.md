@@ -281,8 +281,102 @@ Below are the message topics and parameters that each node implements.
 
 ## ROS Nodes Structure
 
+### Original
+
+<img src="image/Original ROS Nodes Structure.png"/>
+
+
+### Customization
+
+<img src="image/Customized ROS Nodes Structure.png"/>
+
 
 
 
 ## Code Structure
 
+### node_video_source
+
+<img src="image/node_video_output.png"/>
+
+
+### node_detectnet
+
+<img src="image/node_detectnet.png"/>
+
+### node_video_output
+
+<img src="image/node_video_output.png"/>
+
+### node_move_controller
+
+<img src="image/node_move_controller.png"/>
+
+
+## Expected Result
+Please refer to /video/Test_Result.mp4
+
+
+## How the submission satifies the necessary rubric
+The following criteria and the points are satified by this submission
+
+### README (All Rubric Points REQUIRED)
+
+Criteria : A README with instructions is included with the project.
+MEETS SPECIFICATIONS : 
+- [x] The README is included with the project and has instructions for building/running the project.
+- [x] If any additional libraries are needed to run the project, these are indicated with cross-platform installation instructions.
+
+Criteria : The README indicates which project is chosen.
+- [x] The README describes the project you have built.
+- [x] The README also indicates the file and class structure, along with the expected behavior or output of the program.
+
+Criteria : The README includes information about each rubric point addressed.
+- [x] The README indicates which rubric points are addressed. The README also indicates where in the code (i.e. files and line numbers) that the rubric points are addressed.
+
+
+
+### Compiling and Testing (All Rubric Points REQUIRED)
+
+Criteria : The submission must compile and run.
+MEETS SPECIFICATIONS :
+- [x] The project code must compile and run without errors.
+- [x] Use cmake and make, as provided in the starter repos. If you choose another build system, the code must compile on any reviewer platform.
+
+
+### Loops, Functions, I/O
+
+Criteria : The project demonstrates an understanding of C++ functions and control structures.
+MEETS SPECIFICATIONS :
+- [x] A variety of control structures are used in the project.
+- [x] The project code is clearly organized into functions.
+
+
+Criteria : The project accepts user input and processes the input.
+MEETS SPECIFICATIONS :
+- [x] The project accepts input from a user as part of the necessary operation of the program.
+
+### Object Oriented Programming (image_converter, ros_compat)
+
+Criteria : The project uses Object Oriented Programming techniques.
+MEETS SPECIFICATIONS :
+- [x] The project code is organized into classes with class attributes to hold the data, and class methods to perform tasks.
+
+
+Criteria : The project uses Object Oriented Programming techniques.
+MEETS SPECIFICATIONS :
+- [x] All class data members are explicitly specified as public, protected, or private.
+
+Criteria : Classes abstract implementation details from their interfaces.
+- [x] All class member functions document their effects, either through function names, comments, or formal documentation. Member functions do not change program state in undocumented ways.
+
+Criteria : Classes encapsulate behavior.
+MEETS SPECIFICATIONS :
+- [x] Appropriate data and functions are grouped into classes. Member data that is subject to an invariant is hidden from the user. State is accessed via member functions. 
+
+
+Criteria : Overloaded functions allow the same function to operate on different parameters.
+- [x] One function is overloaded with different signatures for the same function name.
+
+Criteria : Templates generalize functions in the project.
+- [x] One function is declared with a template that allows it to accept a generic parameter. (ros_combat.h line 55)
